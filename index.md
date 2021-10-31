@@ -1,37 +1,19 @@
-## Welcome to GitHub Pages
+# Welcome to upgradvisor website!
 
-You can use the [editor on GitHub](https://github.com/upgradvisor/upgradvisor.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+## What is upgradvisor?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Upgradvisor, a fusion of "upgrade" and "advisor", is a research project from Columbia University's RCS lab doing extactly that.
+Our goal is to provide meaningful information for developers on how to upgrade their software dependencies.
+Our work emploies static and dynamic analysis to study the change made to the dependency code and deduce the effects on the dependent code.
 
-### Markdown
+## Example
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+COMING SOON.
 
-```markdown
-Syntax highlighted code block
+## Roadmap
 
-# Header 1
-## Header 2
-### Header 3
+We are hard at work developing a bot that will allow every open-source project on github to use our system!
 
-- Bulleted
-- List
+## Contact
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/upgradvisor/upgradvisor.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Want to help or know more? Feel free to reachout to Yaniv - @YanivDa on twitter or yaniv.david@columbia.edu.
