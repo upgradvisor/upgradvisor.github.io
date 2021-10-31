@@ -2,9 +2,7 @@
 
 ## What is upgradvisor?
 
-Upgradvisor, a fusion of "upgrade" and "advisor", is a research project from Columbia University's RCS lab doing extactly that.
-Our goal is to provide meaningful information for developers on how to upgrade their software dependencies.
-Our work emploies static and dynamic analysis to study the change made to the dependency code and deduce the effects on the dependent code.
+Upgradvisor, a fusion of “upgrade” and “advisor”, is a research project from Columbia University’s RCS lab doing exactly that. Our goal is to provide meaningful information for developers on how to upgrade their software dependencies. Our work employs static and dynamic analysis to study the change made to the dependency code and deduce the effects on the dependent code.
 
 ## Example
 
