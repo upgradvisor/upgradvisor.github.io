@@ -82,8 +82,8 @@ code {
 }
 
 #mynetwork {
-  width: 500px;
-  height: 500px;
+  width: 80vh;
+  height: 80vh;
   background-color: #ffffff;
   border: 2px solid lightgray;
   /*display: block;*/
@@ -102,9 +102,6 @@ code {
   z-index: 1;
   top: 0;
 }
-
-
-
 
 input {
   position: absolute;
@@ -200,5 +197,13 @@ a {
   text-decoration-color: #8cc63f;
   -webkit-text-decoration-color: #8cc63f;
   text-underline-offset: 3px;
+}
+
+@media screen and (max-width: 500px) {
+  #mynetwork {
+      width: 100%;
+      display: inline-block;
+      margin: auto;
+  }
 }
 
