@@ -29,12 +29,12 @@
 
     <!-- navigation bar -->
     <div class="w3-top  w3-white w3-padding w3-card" style="z-index:2">
-        <img src="./images/logo.png" class="w3-bar-item" alt="Logo" style="width:3.5%;height:3.5%;padding-left:5px">
-        <a href="#" class="w3-button w3-bar-item" style="padding:6px">
+        <a href="#" class="w3-button w3-bar-item" style="padding:5px 5px !important">
+          <span><img src="./images/logo.png" class="w3-bar-item" alt="Logo" style="max-width:2em;max-height:2em"></span>
           <span><strong>upgr</strong></span>
           <span style="color:#8cc63f;margin-left:-5px;"><strong>advisor</strong></span>
         </a>
-        <div class="w3-right">
+        <div class="w3-bar-item w3-right">
           <a href="#demo" class="w3-bar-item w3-button">DEMO</a>
           <a href="https://github.com/apps/upgradvisor-python3" target="_blank" rel="noopener noreferrer" class="w3-bar-item w3-button">APP</a>
           <a href="https://figshare.com/articles/software/UPGRADVISOR_Early_Adopting_Dependency_Updates_Using_Production_Traces/19593457" target="_blank" rel="noopener noreferrer" class="w3-bar-item w3-button">ARTIFACT</a>
@@ -69,10 +69,10 @@
       <div class="w3-display-container w3-padding-64" style="max-width:90%;margin:auto">
         <div class="w3-container w3-light-grey w3-round-xxlarge" style="padding:70px 50px">
           <div class="w3-row-padding">
-            <div class="w3-col m6" style="padding-top:23px">
-              <img class="w3-image w3-round-large" src="https://images.unsplash.com/photo-1631624215749-b10b3dd7bca7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Programming image" style="width:93%;height:90%">
+            <div class="w3-half" style="margin:auto">
+              <img class="w3-image w3-round-large w3-center" src="https://images.unsplash.com/photo-1631624215749-b10b3dd7bca7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Programming image" style="max-width:93%;max-height:90%">
             </div>
-            <div class="w3-col m6">
+            <div class="w3-half">
               <h1 style="font-size:1.9em;padding-bottom:5px"><strong>Upgrade your dependencies with confidence.</strong></h1>
               <div class="w3-padding-24" style="height:80vh;overflow:auto;padding:10px;border-left:3px solid #8cc63f">
                   Fast-paced release schedules, along with aging dependencies, leave
@@ -116,8 +116,66 @@
                 <h2 style="font-size:2.5em;letter-spacing:2px"><strong>Analysis of aws-cli</strong></h2>
             </div>
             <div class="w3-row">
+            
+              <div class="w3-half">
+                  <div class="tabs">
+                    <div class="tab">
+                      <input type="radio" id="rd1" name="rd" checked="checked">
+                      <label class="tab-label" for="rd1" style="font-size:1.15em;font-weight:500">Background</label>
+                      <div class="tab-content">
+                          This example shows an upgrade opportunity for <a class="link" href="https://github.com/aws/aws-cli/" target="_blank" rel="noopener noreferrer">aws-cli</a> version 1.21.8.
+                          Initially, this project specified <code>'colorama&gt;=0.2.5,&lt;0.4.4'</code> as one of its dependencies. At the time,
+                          version 0.4.4 already existed for <code>colorama</code> which was blocked from use by this condition, and instead,
+                          version 0.4.3 was the last version available for use.
+                      </div>
+                    </div>
+                    <div class="tab">
+                      <input type="radio" id="rd2" name="rd">
+                      <label class="tab-label" for="rd2" style="font-size:1.15em;font-weight:500">Method</label>
+                      <div class="tab-content">
+                          Using upgradvisor, we performed a dedicated analysis of the difference between <code>colorama</code> versions 0.4.3 and
+                          0.4.4, as used by <code>aws-cli</code>. This analysis indicated that the changes between 0.4.3 and 0.4.4 did not impact
+                          <code>aws-cli</code>. The graph below shows the dependency path of <code>aws-cli</code> relative to <code>colorama</code>.
+                      </div>
+                    </div>
+                    <div class="tab">
+                      <input type="radio" id="rd3" name="rd">
+                      <label class="tab-label" for="rd3" style="font-size:1.15em;font-weight:500">Graph legend</label>
+                      <div class="tab-content">
+                          Each node in the graph indicates a python method (with some exceptions). <code>aws-cli</code> code is shown in green,
+                          and the code calling <code>colorama</code> is shown in orange. Changes between version 0.4.3 and 0.4.4 are shown as
+                          starred.
+                      </div>
+                    </div>
+                    <div class="tab">
+                      <input type="radio" id="rd4" name="rd">
+                      <label class="tab-label" for="rd4" style="font-size:1.15em;font-weight:500">Graph Analysis</label>
+                      <div class="tab-content">
+                          From the attached graph, we can see that <code>aws-cli</code> only calls colorama’s <code>initialise</code> method, which itself has
+                          no changes between 0.4.3 and 0.4.4. Based on the graph, we can see that the changes between 0.4.3 and 0.4.4 are
+                          restricted to the AnsiToWin32.py class, and, excluding a change to formally recognize \x07 as BEL, are changes to the
+                          OSC regex. The changes to the regex were made solely to prevent a catastrophic backtracking bug.
+                      </div>
+                    </div>
+                    <div class="tab">
+                      <input type="radio" id="rd5" name="rd">
+                      <label for="rd5" class="tab-close">Close all &times;</label>
+                    </div>
+                  </div>
+              </div>
+              <script>
+              function myFunction(id) {
+                var x = document.getElementById(id);
+                if (x.className.indexOf("w3-show") == -1) {
+                  x.className += " w3-show";
+                } else { 
+                  x.className = x.className.replace(" w3-show", "");
+                }
+              }
+              </script>
+              
               <!--graph-->
-              <div class="w3-content w3-right w3-half" style="padding-left:20px">
+              <div class="w3-content w3-half" style="padding-left:20px">
                     <span>Try hovering over or moving a node!</span>
                     <div id="mynetwork"></div>
             
@@ -180,65 +238,7 @@
                     
                     </script>
               </div>
-          
-            <div class="w3-half">
-                <div class="tabs">
-                  <div class="tab">
-                    <input type="radio" id="rd1" name="rd" checked="checked">
-                    <label class="tab-label" for="rd1" style="font-size:1.15em;font-weight:500">Background</label>
-                    <div class="tab-content">
-                        This example shows an upgrade opportunity for <a class="link" href="https://github.com/aws/aws-cli/" target="_blank" rel="noopener noreferrer">aws-cli</a> version 1.21.8.
-                        Initially, this project specified <code>'colorama&gt;=0.2.5,&lt;0.4.4'</code> as one of its dependencies. At the time,
-                        version 0.4.4 already existed for <code>colorama</code> which was blocked from use by this condition, and instead,
-                        version 0.4.3 was the last version available for use.
-                    </div>
-                  </div>
-                  <div class="tab">
-                    <input type="radio" id="rd2" name="rd">
-                    <label class="tab-label" for="rd2" style="font-size:1.15em;font-weight:500">Method</label>
-                    <div class="tab-content">
-                        Using upgradvisor, we performed a dedicated analysis of the difference between <code>colorama</code> versions 0.4.3 and
-                        0.4.4, as used by <code>aws-cli</code>. This analysis indicated that the changes between 0.4.3 and 0.4.4 did not impact
-                        <code>aws-cli</code>. The graph below shows the dependency path of <code>aws-cli</code> relative to <code>colorama</code>.
-                    </div>
-                  </div>
-                  <div class="tab">
-                    <input type="radio" id="rd3" name="rd">
-                    <label class="tab-label" for="rd3" style="font-size:1.15em;font-weight:500">Graph legend</label>
-                    <div class="tab-content">
-                        Each node in the graph indicates a python method (with some exceptions). <code>aws-cli</code> code is shown in green,
-                        and the code calling <code>colorama</code> is shown in orange. Changes between version 0.4.3 and 0.4.4 are shown as
-                        starred.
-                    </div>
-                  </div>
-                  <div class="tab">
-                    <input type="radio" id="rd4" name="rd">
-                    <label class="tab-label" for="rd4" style="font-size:1.15em;font-weight:500">Graph Analysis</label>
-                    <div class="tab-content">
-                        From the attached graph, we can see that <code>aws-cli</code> only calls colorama’s <code>initialise</code> method, which itself has
-                        no changes between 0.4.3 and 0.4.4. Based on the graph, we can see that the changes between 0.4.3 and 0.4.4 are
-                        restricted to the AnsiToWin32.py class, and, excluding a change to formally recognize \x07 as BEL, are changes to the
-                        OSC regex. The changes to the regex were made solely to prevent a catastrophic backtracking bug.
-                    </div>
-                  </div>
-                  <div class="tab">
-                    <input type="radio" id="rd5" name="rd">
-                    <label for="rd5" class="tab-close">Close all &times;</label>
-                  </div>
-                </div>
             </div>
-          </div>
-            
-            <script>
-            function myFunction(id) {
-              var x = document.getElementById(id);
-              if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-              } else { 
-                x.className = x.className.replace(" w3-show", "");
-              }
-            }
-            </script>
         </div>
       </div>
     <!--more examples-->
